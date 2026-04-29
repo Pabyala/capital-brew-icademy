@@ -5,26 +5,24 @@ import Label from '../components/ui/label';
 import Button from '../components/ui/button';
 import EyeButton from '../components/ui/eye-button';
 import { ShowToast } from '../utils/toastify.utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoginBody, setLoginCredential } from '../features/authentication/authentication.features.slice';
+import { validateLogin } from '../utils/validation/authentication.validation';
+import { Link } from 'react-router-dom';
 
-export default function LoginUserPage() {
+export default function SigninUserPage() {
 
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState(false);
+    const loginBody = useSelector(selectLoginBody)
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!email && !password) {
-            return ShowToast('Email and password are required', 'error');
-        }
 
-        if (!email) {
-            return ShowToast('Email is required', 'error');
-        }
-
-        if (!password) {
-            return ShowToast('Password is required', 'error');
-        }
+        const error = validateLogin(loginBody)
+        if (error) return ShowToast(error, "error");
+        
+        console.log("loginBody: ", loginBody)
     }
 
     return (
@@ -45,8 +43,8 @@ export default function LoginUserPage() {
                                 <Label label='Email *' />
                                 <Input
                                     type={'email'}
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={loginBody.email}
+                                    onChange={(e) => dispatch(setLoginCredential({ email: e.target.value }))}
                                     placeholder={'example@gmail.com'}
                                 />
                             </div>
@@ -55,8 +53,8 @@ export default function LoginUserPage() {
                                 <div className='relative'>
                                     <Input
                                         type={showPassword ? "text" : "password"}
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
+                                        value={loginBody.password}
+                                        onChange={(e) => dispatch(setLoginCredential({ password: e.target.value }))}
                                         placeholder={'*******'}
                                         maxLength={20}
                                         minLength={6}
@@ -65,13 +63,25 @@ export default function LoginUserPage() {
                                     <EyeButton 
                                         type='button'
                                         onClick={() => setShowPassword(!showPassword)}
-                                        value={password}
+                                        value={loginBody.password}
                                         isShowEye={showPassword}
                                     />
                                 </div>
                             </div>
                             <Button type="submit" label='Sign In' />
                         </form>
+                        
+                        <div className="flex flex-col items-center mt-5 text-xs text-gray-600 space-y-2">
+                            <Link to="/account/forgot-password" className="text-cbColor font-medium hover:underline">
+                                Forgot password?
+                            </Link>
+                            <div>
+                                <span>Don’t have an account?{" "}</span>
+                                <Link to="/account/signup" className="text-cbColor font-medium hover:underline">
+                                    Sign in
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <p className='text-center text-xs pt-[30px]'>© {new Date().getFullYear()} PhilLife. All rights reserved.</p>
