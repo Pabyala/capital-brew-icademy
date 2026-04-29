@@ -78,7 +78,7 @@ export default function SigninUserPage() {
                             <div>
                                 <span>Don’t have an account?{" "}</span>
                                 <Link to="/account/signup" className="text-cbColor font-medium hover:underline">
-                                    Sign in
+                                    Sign up
                                 </Link>
                             </div>
                         </div>

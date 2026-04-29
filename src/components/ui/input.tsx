@@ -14,7 +14,7 @@ interface InputProps {
 
 export default function Input({
     placeholder, required, maxLength, type, value, onChange, 
-    className = 'block w-full text-xs rounded border border-gray-300 px-3 py-2 pr-10 shadow-sm outline-none focus:border-black',
+    className = 'block w-full text-xs rounded border border-gray-300 px-3 py-1.5 pr-10 shadow-sm outline-none focus:border-black',
     autoComplete, minLength
 }: InputProps) {
     return (
