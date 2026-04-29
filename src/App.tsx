@@ -1,5 +1,5 @@
 import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import LoginUserPage from './pages/login.user.page';
 import { ToastContainer, Zoom } from 'react-toastify';
 
