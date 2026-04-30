@@ -5,7 +5,7 @@ interface LabelProps {
 
 export default function Label({
     label,
-    className = 'block text-xs font-medium',
+    className = 'block text-sm font-medium lg:text-xs',
 }: LabelProps) {
     return (
         <label className={className}>{label}</label>

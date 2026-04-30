@@ -9,7 +9,7 @@ const initialState: AuthenticationState = {
     pendingEmail: null,
     justLoggedOut: false, 
     loginBody: { email: '', password: '' },
-    createAccountBody: { email: '', password: '', confirmPassword: '' },
+    createAccountBody: { firstName: '', lastName: '', birthday: '', email: '', password: '', confirmPassword: '' },
     resetPasswordBody: ''
 };
 
@@ -42,7 +42,7 @@ const authenticationSlice = createSlice({
             };
         },
         clearCreateAccountCredential: (state) => {
-            state.createAccountBody = { email: '', password: '', confirmPassword: '' }; 
+            state.createAccountBody = { firstName: '', lastName: '', birthday: '', email: '', password: '', confirmPassword: '' }; 
         },
 
         setResetPasswordBody: (state, action: PayloadAction<string>) => {

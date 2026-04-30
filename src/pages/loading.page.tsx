@@ -10,7 +10,7 @@ export default function LoadingPage() {
                 alt="Capital Brew Logo"
                 //className="w-[300px] h-[120px] object-contain animate-[pulse_1.5s_ease-in-out_infinite]"
                 // className="w-[300px] h-[120px] object-contain opacity-70 animate-[pulse_1.8s_ease-in-out_infinite]"
-                className="h-[80px] lg:h-[100px] object-contain opacity-80 animate-pulse"
+                className="h-[80px] lg:h-[100px] object-contain opacity-80 animate-pulse select-none"
             />
         </div>
     )

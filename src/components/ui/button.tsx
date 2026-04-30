@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 
 export default function Button({
-    className = 'bg-cbColor text-white inline-flex w-full items-center justify-center rounded p-2.5 text-xs font-medium',
+    className = 'bg-cbColor text-white inline-flex w-full items-center justify-center rounded p-2.5 text-sm lg:text-xs font-medium',
     type, label, onClick
 }: ButtonProps) {
     return (

@@ -20,8 +20,16 @@ export function validateCreateAccount(data: CreateAccountBody): string | null {
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
-    if (!data.email && !data.password && !data.confirmPassword) {
+    if (!data.email && !data.password && !data.confirmPassword && !data.firstName && !data.lastName) {
         return "All fields are required";
+    }
+
+    if (!data.firstName) {
+        return "First name is required";
+    }
+
+    if (!data.lastName) {
+        return "Last name is required";
     }
 
     if (!data.email) {

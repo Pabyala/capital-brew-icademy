@@ -5,6 +5,9 @@ export interface LoginBody {
 
 export interface CreateAccountBody {
     email: string;
+    firstName: string;
+    lastName: string;
+    birthday?: string;
     password: string;
     confirmPassword: string;
 }

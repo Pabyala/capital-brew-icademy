@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Label from '../components/ui/label'
 import Input from '../components/ui/input'
@@ -19,19 +18,19 @@ export default function ForgotPasswordPage() {
         if(!resetPasswordBody) {
             return ShowToast("Email is required", "error");
         }
-
+        
         console.log("Send email: ", resetPasswordBody)
     }
 
     return (
-        <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-50 px-4'>
-            <div className='container flex flex-col items-center justify-center'>
-                <div className='max-w-md w-full border rounded'>
+        <div className='h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-50'>
+            <div className='container flex flex-col items-center justify-center h-full'>
+                <div className='max-w-md lg:w-[400px] w-full border'>
                     <div className='text-center pt-4 px-5 space-y-2'>
                         <div className='flex items-center justify-center'>
                             <MdiEmailCheck height={90} width={90}/>
                         </div>
-                        <p className='text-gray-600 text-xs'>
+                        <p className='text-gray-600 text-sm lg:text-xs'>
                             Just need to confirm your email to send you instructions to reset your password..
                         </p>
                     </div>
@@ -48,18 +47,14 @@ export default function ForgotPasswordPage() {
                             </div>
                             <Button type="submit" label='Reset Password' />
                         </form>
-                        <div className='text-center mt-5 text-xs text-gray-600'>
-                            Back to sign in?{" "}
-                            <Link
-                                to="/account/signin"
-                                className='text-cbColor font-medium hover:underline'
-                            >
-                                Sign in
+                        <div className='text-center mt-5 text-sm lg:text-xs text-gray-600'>
+                            <Link to="/account/signin" className='text-cbColor font-medium hover:underline'>
+                                Back to sign in ?
                             </Link>
                         </div>
                     </div>
                 </div>
-                <p className='text-center text-xs pt-[30px]'>
+                <p className='text-center text-sm lg:text-xs pt-[30px]'>
                     © {new Date().getFullYear()} PhilLife. All rights reserved.
                 </p>
             </div>

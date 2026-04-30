@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import CBLogoLogIn from '../assets/images/capital brew logo.png'
 import Input from '../components/ui/input';
 import Label from '../components/ui/label';
 import Button from '../components/ui/button';
@@ -9,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectLoginBody, setLoginCredential } from '../features/authentication/authentication.features.slice';
 import { validateLogin } from '../utils/validation/authentication.validation';
 import { Link } from 'react-router-dom';
+import HeaderLogin from '../components/login/header-login';
 
 export default function SigninUserPage() {
 
@@ -26,18 +26,11 @@ export default function SigninUserPage() {
     }
 
     return (
-        <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-50 px-4'>
-            <div className='container flex flex-col items-center justify-center'>
-                <div className='max-w-md w-full border rounded'>
-                    <div className='text-center pt-4'>
-                        <img
-                            src={CBLogoLogIn}
-                            alt="Capital Brew Logo" 
-                            className="mx-auto w-[300px] h-[120px] object-contain md:w-[310px] mdLh-[130px]"
-                        />
-                        <p className='text-gray-600 pb-3 text-xs'>Fresh coffee and warm bread, just a tap away.</p>
-                    </div>
-                    <div className='bg-white p-8'>
+        <div className='h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-50'>
+            <div className='container flex flex-col items-center justify-center h-full'>
+                <div className='max-w-md lg:w-[400px] w-full'>
+                    <HeaderLogin label='Welcome back! Please sign in to continue.'/>
+                    <div className='bg-white px-5 py-5 rounded shadow-lg'>
                         <form className='space-y-4' onSubmit={handleLogin}>
                             <div className='space-y-1.5'>
                                 <Label label='Email *' />
@@ -71,20 +64,21 @@ export default function SigninUserPage() {
                             <Button type="submit" label='Sign In' />
                         </form>
                         
-                        <div className="flex flex-col items-center mt-5 text-xs text-gray-600 space-y-2">
-                            <Link to="/account/forgot-password" className="text-cbColor font-medium hover:underline">
-                                Forgot password?
-                            </Link>
+                        <div className="grid grid-cols-2 gap-1 items-center mt-5 text-sm lg:text-xs text-gray-600">
                             <div>
-                                <span>Don’t have an account?{" "}</span>
+                                <Link to="/account/forgot-password" className="text-cbColor font-medium hover:underline">
+                                    Forgot password?
+                                </Link>
+                            </div>
+                            <div className='flex justify-end'>
                                 <Link to="/account/signup" className="text-cbColor font-medium hover:underline">
-                                    Sign up
+                                    Don’t have an account?
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p className='text-center text-xs pt-[30px]'>© {new Date().getFullYear()} PhilLife. All rights reserved.</p>
+                <p className='text-center text-sm lg:text-xs pt-[30px]'>© {new Date().getFullYear()} PhilLife. All rights reserved.</p>
             </div>
         </div>
     )
