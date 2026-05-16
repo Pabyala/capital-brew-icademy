@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import capitalBrewLogo from "../assets/images/capital brew logo.png";
-import { RiAccountCircleLine } from '../assets/iconify';
+import { BurgerMenu, Cart, RiAccountCircleLine } from '../assets/iconify';
 import OutletPage from './outlet.page';
 
 interface Product {
@@ -26,20 +26,31 @@ export default function POSPage() {
                     <div className='container lg:px-8'>
                         <div className='flex justify-between items-center h-16 lg:container'>
                             {/* LOGO */}
-                            {/* <div className="flex items-center gap-3 cursor-pointer">
-                                <img
-                                    src={capitalBrewLogo} 
-                                    alt="Admin Dashboard"
-                                    className="h-[30px] md:h-[40px] w-auto object-contain"
-                                />
-                            </div> */}
-
                             <div className='flex justify-between items-center w-full'>
+                                <div className='flex justify-center items-center'>
+                                    <BurgerMenu size={25}/>
+                                </div>
+                                <div className="flex items-center gap-3 cursor-pointer">
+                                    <img
+                                        src={capitalBrewLogo} 
+                                        alt="Admin Dashboard"
+                                        className="h-[30px] md:h-[40px] w-auto object-contain"
+                                    />
+                                </div>
+                                <div className='relative flex justify-center items-center cursor-pointer'>
+                                    <Cart size={25}/>
+                                    <span className='absolute -top-1 -right-1 bg-red-500 text-white text-[10px] min-w-[16px] h-[16px] px-1 flex items-center justify-center rounded-full'>
+                                        3
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* <div className='flex justify-between items-center w-full'>
                                 <p className='text-sm lg:text-xs font-semibold truncate'>Good afternoon, Juan Cruz!</p>
                                 <div className='flex justify-center items-center'>
                                     <RiAccountCircleLine height={30} width={30}/>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* ICON */}
                             {/* <div className='flex items-center gap-3 relative'>

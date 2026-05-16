@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
                         </form>
                         <div className='text-center mt-5 text-sm lg:text-xs text-gray-600'>
                             <Link to="/account/signin" className='text-cbColor font-medium hover:underline'>
-                                Back to sign in ?
+                                Back to sign in?
                             </Link>
                         </div>
                     </div>
