@@ -23,7 +23,8 @@ module.exports = {
         customGray: '#F0F2F5',
         cbColor: '#AA6833',
         cbColorSecond: '#D5C9BE',
-        cbColorDark: '#3B2314'
+        cbColorDark: '#3B2314',
+        cbLightColor: '#F4F5EC'
       },
     },
   },

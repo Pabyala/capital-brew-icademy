@@ -10,6 +10,8 @@ import UnauthorizedPage from './pages/unauthorized.page';
 import NotFoundPage from './pages/not-found.page';
 import OutletPage from './pages/outlet.page';
 import HomePage from './pages/home.page';
+import LoadingPage from './pages/loading.page';
+import BranchOptionPage from './pages/branch-option.page';
 
 function App() {
   return (
@@ -40,8 +42,8 @@ function App() {
           </Route>
           
           <Route path="/home" element={<HomePage />} />
-          <Route path="/cb-branch" element={<OutletPage />} />
-          {/* <Route path="loading" element={<LoadingPage />} /> */}
+          <Route path="/cb-branch" element={<BranchOptionPage />} />
+          <Route path="loading" element={<LoadingPage />} />
         </Route>
       </Routes>
     </>

@@ -13,9 +13,9 @@ export default function OutletPage() {
     return (
         <div className='h-screen flex flex-col bg-gray-100 pt-[50px]'>
             <div className='h-screen container mx-auto flex flex-col overflow-hidden bg-white'>
-                <div className="lg:px-8 py-3 space-y-2 flex flex-col flex-1 overflow-y-auto">
+                <div className="lg:px-8 space-y-2 flex flex-col flex-1 overflow-y-auto">
                     {/* <div className="flex-1 bg-white rounded py-4 px-2 lg:px-8"> */}
-                    <div className="flex-1 bg-white rounded py-4 pr-2">
+                    <div className="flex-1 bg-white rounded py-3 pr-2">
                         <TypeOfBranch/>
                         <UserGreetings/>
                         <SearchItems/>
