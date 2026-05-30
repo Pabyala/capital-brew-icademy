@@ -1,4 +1,4 @@
-import CBLogoLogIn from '../../assets/images/capital brew logo.png'
+import CBLogoLogIn from '../../assets/images/capitalbrew-logos/capital brew logo.png'
 
 interface HeaderLoginProps {
     label: string;

@@ -15,7 +15,7 @@ export default function CartModal({ onClose, open }: NavbarProps) {
                     <h2 className="font-semibold text-sm">
                         Cart
                     </h2>
-                    <button onClick={onClose} className="text-sm">✕</button>
+                    <button onClick={onClose} className="text-sm rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-200">✕</button>
                 </div>
                 <div className="flex-1 overflow-y-auto p-3 space-y-2">
                     {cartCoffee.map((cart) => (
@@ -67,7 +67,7 @@ export default function CartModal({ onClose, open }: NavbarProps) {
                 </div>
                 <div className="border-t p-4">
                     <div className="flex justify-between pb-4">
-                        <div className="text-sm font-medium">Total (12 items)</div>
+                        <div className="text-sm">Total (<span className="font-medium">{'12'} items</span>)</div>
                         <div className="text-sm font-medium">{`₱1,000.00`}</div>
                     </div>
                     <button className="w-full flex items-center justify-center gap-2 bg-cbColor text-white py-2 rounded text-sm">

@@ -8,7 +8,6 @@ import AccountLayout from './pages/page-layout/account.layout';
 import MainLayout from './pages/page-layout/main.layout';
 import UnauthorizedPage from './pages/unauthorized.page';
 import NotFoundPage from './pages/not-found.page';
-import OutletPage from './pages/outlet.page';
 import HomePage from './pages/home.page';
 import LoadingPage from './pages/loading.page';
 import BranchOptionPage from './pages/branch-option.page';

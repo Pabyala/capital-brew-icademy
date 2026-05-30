@@ -1,4 +1,4 @@
-import { BagCheck, Branch, Cart, CheckedItem, Delete, Home, Logout, Orders, User } from '../../assets/iconify';
+import { Branch, Cart, Logout, Orders, User } from '../../assets/iconify';
 
 interface MenuModalProps {
     onClose: () => void;
@@ -12,7 +12,7 @@ export default function MenuModal({ onClose, open }: MenuModalProps) {
             <div className="w-[350px] h-full bg-white shadow-xl animate-slide-left flex flex-col">
                 <div className="flex justify-between items-center border-b py-4 px-3">
                     <h2 className="font-semibold text-sm">Juan Dela Cruz</h2>
-                    <button onClick={onClose} className="text-sm">✕</button>
+                    <button onClick={onClose} className="text-sm rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-200">✕</button>
                 </div>
                 <div className="flex-1 overflow-y-auto p-3 space-y-2">
                     <div className="border-b border-cbColorSecond relative rounded p-2.5 flex space-x-2.5 items-center">
@@ -37,7 +37,7 @@ export default function MenuModal({ onClose, open }: MenuModalProps) {
                         <div className="flex items-center justify-center">
                             <Logout size={25} />
                         </div>
-                        <p className="leading-none text-sm font-medium">Checkout</p>
+                        <p className="leading-none text-sm font-medium">Logout</p>
                     </button>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import { BurgerMenu, Cart } from '../../assets/iconify'
-import capitalBrewLogo from "../../assets/images/capital brew logo.png";
+import capitalBrewLogo from "../../assets/images/capitalbrew-logos/capital brew logo.png";
 
 interface NavbarProps {
     openCart: () => void;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/navbar";
 import { Location, NextSelect } from "../assets/iconify";
-import capitalBrewLogo from '../assets/images/CB-LOGO-ICON.png'
+import capitalBrewLogo from '../assets/images/capitalbrew-logos/CB-LOGO-ICON.png'
 
 type Branch = {
     id: number;

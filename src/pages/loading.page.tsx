@@ -1,5 +1,5 @@
 import React from 'react'
-import CBLogoIcon from '../assets/images/CB-LOGO-ICON.png'
+import CBLogoIcon from '../assets/images/capitalbrew-logos/CB-LOGO-ICON.png'
 
 export default function LoadingPage() {
     return (
