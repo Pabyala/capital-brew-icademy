@@ -20,7 +20,7 @@ export default function OutletPage() {
             <SearchItems/>
             <Categories/>
             <AvailableCoffee/>
-            <ItemModal/>
+            {/* <ItemModal/> */}
             {/* <LoadingPage /> */}
             {/* <PopularPicks/>
             <AllDayFavorites/> */}

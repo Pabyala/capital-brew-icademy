@@ -274,31 +274,35 @@ export const cartCoffee = [
 export const AddOns = [
     {
         id: 1,
-        label: "Milk",
-        prize: 25.00,
+        label: "Extra Espresso Shot",
+        prize: 50.00,
         level: "30mL",
         isAvailable: true,
     },
     {
         id: 2,
-        label: "Sugar",
-        prize: 35.00,
+        label: "Extra Milk",
+        prize: 30.00,
         level: "20mL",
         isAvailable: true,
     },
     {
         id: 3,
-        label: "Syrup",
-        prize: 40.00,
+        label: "Sub Oat Milk",
+        prize: 50.00,
         level: "15mL",
         isAvailable: true,
     },
+]
+
+export const temperature = [
     {
-        id: 4,
-        label: "Choco Sauce",
-        prize: 20.00,
-        level: "10mL",
-        isAvailable: true,
+        id: 1,
+        name: 'Iced',
+    },
+    {
+        id: 2,
+        name: 'Hot'
     }
 ]
 
@@ -320,5 +324,20 @@ export const coffeeSizes = [
         size: "16oz",
         price: 190.00,
         isAvailable: true,
+    },
+]
+
+export const categories = [
+    {
+        id: 1,
+        name: 'Coffee',
+    },
+    {
+        id: 2,
+        name: 'Chocolate and Cocoa',
+    },
+    {
+        id: 3,
+        name: 'Matcha and Tea',
     },
 ]

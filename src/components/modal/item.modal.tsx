@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import IceCoffee from '../../assets/images/items/Image-4.png'
-import { BagCheck, Logout } from '../../assets/iconify'
-import { AddOns, coffeeSizes } from '../data/capital-brew-data'
+import { BagCheck } from '../../assets/iconify'
+import { AddOns, coffeeSizes, temperature } from '../data/capital-brew-data'
 
-export default function ItemModal() {
+interface ItemModalProps {
+    setIsShowModal: (value: boolean) => void;
+}
+
+export default function ItemModal({ setIsShowModal }: ItemModalProps) {
 
     const [selected, setSelected] = useState<number[]>([]);
     const maxSelect = 2
@@ -21,6 +25,7 @@ export default function ItemModal() {
     }
 
     const [selectedSize, setSelectedSize] = useState<number | null>(null)
+    const [selectedTemperature, setSelectedTemperature] = useState<number | null>(null)
 
     return (
         <div className='fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4'>
@@ -39,11 +44,43 @@ export default function ItemModal() {
                                 <p className='text-base text-center font-bold break-words leading-tight'>
                                     {'Matcha'}
                                 </p>
-                                <p className='text-sm text-center font-medium break-words leading-tight'>
-                                    {'Hot'}
-                                </p>
                             </div>
                         </div>
+                        <div className='w-full'>
+                            <div className="mb-2 clear-start flex justify-between">
+                                <div className='flex items-center justify-center space-x-2'>
+                                    <p className='text-sm font-medium'>Temperature</p>
+                                    <p className='text-[11px] text-gray-500 italic'>* Pick 1</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {temperature.map((temp) => {
+                                    const isSelected = selectedTemperature === temp.id
+                                    return (
+                                        <label
+                                            key={temp.id}
+                                            className={`
+                                                flex items-center gap-2 px-2 py-1 rounded border cursor-pointer transition
+                                                ${isSelected ? 'border-cbColor bg-gray-50' : 'border-gray-200 hover:border-cbColor'}
+                                            `}
+                                        >
+                                            <input
+                                                type="radio"
+                                                name="temp-size"
+                                                className="hidden"
+                                                checked={isSelected}
+                                                onChange={() => setSelectedTemperature(temp.id)}
+                                            />
+
+                                            <div className={`text-[13px] ${isSelected ? 'text-cbColor' : 'text-gray-700'}`}>
+                                                <span>{temp.name}</span>
+                                            </div>
+                                        </label>
+                                    )
+                                })}
+                            </div>
+                        </div>
+
                         <div className='w-full'>
                             <div className="mb-2 clear-start flex justify-between">
                                 <div className='flex items-center justify-center space-x-2'>
@@ -141,8 +178,8 @@ export default function ItemModal() {
                             </button>
                         </div>
                         <div className='absolute right-5 top-2'>
-                            <button className='w-8 h-8 flex items-center justify-center bg-[#aa693325] rounded-full border border-cbColor'>
-                            <span className='text-xs'>✕</span>
+                            <button onClick={() => setIsShowModal(false)} className='w-8 h-8 flex items-center justify-center bg-[#aa693325] rounded-full border border-cbColor'>
+                                <span className='text-xs'>✕</span>
                             </button>
                         </div>
                     </div>

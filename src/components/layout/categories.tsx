@@ -1,34 +1,40 @@
-import React from 'react'
-import { HotCoffee } from '../../assets/iconify'
+import { useState } from 'react'
+import { categories } from '../data/capital-brew-data'
+import CBrewIconLogo from '../../assets/images/capitalbrew-logos/CB-LOGO-ICON.png'
 
 export default function Categories() {
-    
+
+    const [selectedSize, setSelectedSize] = useState<number | null>(null)
+
     return (
-        <div className='w-full grid grid-cols-5 gap-2 mt-4'>
-            <div className='flex flex-col w-full space-y-1'>
-                <div className='bg-cbColor h-10 rounded-xl flex items-center justify-center'>
-                    <p className='text-xs text-white'>All</p>
-                </div>
-                <p className='text-[10px] text-center whitespace-nowrap overflow-hidden text-ellipsis'>All</p>
-            </div>
-            <div className='flex flex-col w-full space-y-1'>
-                <div className='bg-[#aa693325] h-10 rounded-xl flex items-center justify-center'>
-                    <HotCoffee />
-                </div>
-                <p className='text-[10px] text-center whitespace-nowrap overflow-hidden text-ellipsis'>Coffee</p>
-            </div>
-            <div className='flex flex-col w-full space-y-1'>
-                <div className='bg-[#aa693325] h-10 rounded-xl flex items-center justify-center'>
-                    <HotCoffee />
-                </div>
-                <p className='text-[10px] text-center whitespace-nowrap overflow-hidden text-ellipsis'>Non-Coffee</p>
-            </div>
-            <div className='flex flex-col w-full space-y-1'>
-                <div className='bg-[#aa693325] h-10 rounded-xl flex items-center justify-center'>
-                    <HotCoffee />
-                </div>
-                <p className='text-[10px] text-center whitespace-nowrap overflow-hidden text-ellipsis'>Food</p>
-            </div>
+        <>
+        <div className='mt-4 clear-start text-sm font-semibold pb-1'>Category</div>
+        <div className='flex flex-wrap gap-2'>
+            {categories.map((cat) => {
+                const isSelected = selectedSize === cat.id
+                return (
+                    <label
+                        key={cat.id}
+                        className={`
+                            flex items-center gap-2 px-2 py-1 rounded border cursor-pointer transition
+                            ${isSelected ? 'border-cbColor bg-gray-50' : 'border-gray-200 hover:border-cbColor'}
+                        `}
+                    >
+                        <input
+                            type="radio"
+                            name="coffee-size"
+                            className="hidden"
+                            checked={isSelected}
+                            onChange={() => setSelectedSize(cat.id)}
+                        />
+                        <div className={`text-sm font-medium flex space-x-1 items-center ${isSelected ? 'text-cbColor' : 'text-gray-700'}`}>
+                            <img className="w-4 h-4" src={CBrewIconLogo} alt="" />
+                            <div>{cat.name}</div>
+                        </div>
+                    </label>
+                )
+            })}
         </div>
+        </>
     )
 }
