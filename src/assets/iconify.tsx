@@ -7,6 +7,7 @@ interface IconifyProps extends SVGProps<SVGSVGElement> {
 type IconifyComponentProps = {
 	color?: string
 	size?: string | number
+	className?: string;
 }
 
 export function MdiEmailCheck(props: SVGProps<SVGSVGElement>) {
@@ -192,10 +193,18 @@ export const User = ({ color = 'currentColor', size = '1em' }: IconifyComponentP
 
 export const Logout = ({ color = 'currentColor', size = '1em' }: IconifyComponentProps) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={size}
-			height={size} style={{ color }} viewBox="0 0 24 24">
+		<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} style={{ color }} viewBox="0 0 24 24">
 			<path d="M0 0h24v24H0z" fill="none" />
 			<path fill="none" stroke={color} stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.5 8.04c-.041-1.16-.178-1.885-.636-2.453c-.653-.812-1.77-1.066-4.004-1.576l-1-.228c-3.395-.774-5.092-1.161-6.226-.27C2.5 4.405 2.5 6.126 2.5 9.568v4.864c0 3.442 0 5.164 1.134 6.055s2.83.504 6.225-.27l1.002-.228c2.233-.51 3.35-.764 4.003-1.576c.458-.567.595-1.293.636-2.453m3-6.948s3 2.21 3 3s-3 3-3 3m2.5-3H8.5" />
+		</svg>
+	)
+}
+
+export const Arrow = ({ color = 'currentColor', size = '1em', className }: IconifyComponentProps) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" className={className} width={size} height={size} style={{ color }} viewBox="0 0 24 24">
+			<path d="M0 0h24v24H0z" fill="none" />
+			<path fill={color} fill-rule="evenodd" d="m4 15l8-8l8 8l-2 2l-6-6l-6 6z" />
 		</svg>
 	)
 }

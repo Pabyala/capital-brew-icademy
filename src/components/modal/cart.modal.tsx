@@ -1,4 +1,5 @@
-import { BagCheck, CheckedItem, Delete } from "../../assets/iconify";
+import { useState } from "react";
+import { Arrow, BagCheck, CheckedItem, Delete } from "../../assets/iconify";
 import { cartCoffee } from "../data/capital-brew-data";
 
 interface NavbarProps {
@@ -7,6 +8,13 @@ interface NavbarProps {
 }
 
 export default function CartModal({ onClose, open }: NavbarProps) {
+
+    const [expandedItem, setExpandedItem] = useState<number | null>(null);
+
+    const toggleDetails = (id: number) => {
+        setExpandedItem(prev => prev === id ? null : id);
+    };
+
     return (
         <div className="fixed inset-0 bg-black/40 z-[100] flex justify-end">
             <div onClick={onClose} className="flex-1"/>
@@ -18,52 +26,64 @@ export default function CartModal({ onClose, open }: NavbarProps) {
                     <button onClick={onClose} className="text-sm rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-200">✕</button>
                 </div>
                 <div className="flex-1 overflow-y-auto p-3 space-y-2">
-                    {cartCoffee.map((cart) => (
-                        <div
-                            key={cart.id}
-                            className="border border-gray-300 relative bg-cbLightColor rounded p-3 grid grid-cols-[auto_1fr_auto] gap-3 items-center"
-                            >
-                            
-                            <div className="absolute top-0 left-0">
-                                {/* <CheckedItem color="#AA6833" size={25}/> */}
-                                {/* <CheckedItem color="#ffffff" size={25}/> */}
-                                <CheckedItem color="#AA6833" size={25}/>
-                            </div>
-                            {/* Image */}
-                            <img
-                                // src={cart.coffeeImage}
-                                // alt={cart.coffeeName}
-                                className="w-14 h-14 lg:w-16 lg:h-16 object-cover rounded"
-                            />
+                    {cartCoffee.map((cart) => {
+                        const isExpanded = expandedItem === cart.id
 
-                            {/* Details */}
-                            <div className="h-full space-y-1">
-                                <div className="font-medium text-xs">{cart.coffeeName}</div>
-                                <div className="text-xs">{`${cart.ounce} | ${cart.categoryType}`}</div>
-                                <div className="font-medium text-xs">{`₱${cart.price}`}</div>
-                                {/* <div className="flex items-center gap-2">
-                                    <button className="w-6 h-6 font-semibold flex items-center justify-center border border-cbColor rounded-full">-</button>
-                                    <span className="text-xs font-medium">{`14`}</span>
-                                    <button className="w-6 h-6 font-semibold flex bg-cbColor text-white items-center justify-center border rounded-full">+</button>
-                                </div> */}
-                            </div>
+                        const size = '12oz'
+                        const addOns = [
+                            'Extra Espresso Shot',
+                            'Extra Milk',
+                            'Sub Oat Milk'
+                        ]
 
-                            {/* Qty Controls */}
-                            <div className="flex flex-col items-start h-full gap-3">
-                                <div className="w-full">
-                                    <div className="flex justify-center">
-                                        <Delete size={20}/>
-                                        {/* <CloseEx size={20}/> */}
+                        const details = [size, ...addOns].join(' | ')
+                        return (
+                            <div key={cart.id} className="border border-gray-300 relative rounded p-3 grid grid-cols-[auto_1fr_auto] items-center overflow-hidden">
+                                <div className="absolute top-0 left-0">
+                                    {/* <CheckedItem color="#AA6833" size={25}/> */}
+                                    {/* <CheckedItem color="#ffffff" size={25}/> */}
+                                    <CheckedItem color="#AA6833" size={25}/>
+                                </div>
+                                {/* Image */}
+                                <div className="flex justify-start items-start h-full mr-1">
+                                    <img
+                                        // src={cart.coffeeImage}
+                                        // alt={cart.coffeeName}
+                                        className="w-14 h-14 lg:w-16 lg:h-16 object-cover rounded"
+                                    />
+                                </div>
+                                {/* Details */}
+                                <div className="h-auto w-full space-y-1 overflow-hidden">
+                                    <div className="grid grid-cols-11 gap-1">
+                                        <div className="h-full col-span-10 w-full space-y-1">
+                                            <div className="font-medium text-xs">{`${cart.categoryType} | ${cart.coffeeName}`}</div>
+                                            <div className="w-full text-[11px]">
+                                                <div onClick={() => toggleDetails(cart.id)} className={`flex ${isExpanded ? 'items-start' : ''} justify-between gap-2`}>
+                                                    <div className={`transition-transform ${isExpanded ? "" : "truncate flex-1 min-w-0"}`}>
+                                                        {details}
+                                                    </div>
+                                                    <button className={`text-[11px] text-cbColor flex-shrink-0 ${isExpanded ? 'pt-1' : ''}`}>
+                                                        {isExpanded ? <Arrow className={`transition-transform ${isExpanded ? "rotate-180" : ""}`}/> : <Arrow/>}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex col-span-1 flex-col items-start h-full gap-3">
+                                            <div className="text-xs underline text-cbColor">{`Edit`}</div>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-11 gap-1">
+                                        <div className="col-span-10">
+                                            <div className="font-medium text-xs">{`₱${cart.price}`}</div>
+                                        </div>
+                                        <div className="col-span-1">
+                                            <div className="text-xs">{`x12`}</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <button className="w-6 h-6 font-semibold flex items-center justify-center border border-cbColor rounded-full">-</button>
-                                    <span className="text-xs font-medium">{`14`}</span>
-                                    <button className="w-6 h-6 font-semibold flex bg-cbColor text-white items-center justify-center border rounded-full">+</button>
-                                </div>
                             </div>
-                            </div>
-                    ))}
+                        )
+                    })}
                 </div>
                 <div className="border-t p-4">
                     <div className="flex justify-between pb-4">
