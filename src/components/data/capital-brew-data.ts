@@ -158,112 +158,112 @@ export const cartCoffee = [
         price: 120.00
     },
     { 
-        id: 4,
+        id: 5,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 6,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 7,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 8,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 9,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 10,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 11,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 12,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 13,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 14,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 15,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 16,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 17,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 18,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 19,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
         price: 120.00
     },
     { 
-        id: 4,
+        id: 20,
         coffeeName: "Matcha Latte",
         categoryType: "Hot",
         ounce: '12oz',
@@ -340,4 +340,69 @@ export const categories = [
         id: 3,
         name: 'Matcha and Tea',
     },
+]
+
+export interface AddOns {
+    name: string;
+    price: number;
+}
+
+export interface Checkout {
+    id: number,
+    productId: number,
+    name: string;
+    temperature: string;
+    quantity: number;
+    size: string;
+    sizePrice: number;
+    addOns: AddOns[]
+}
+
+export const checkOutSummary: Checkout[] = [
+    {
+        id: 1,
+        productId: 1,
+        name: 'Caramel',
+        temperature: 'Hot',
+        quantity: 2,
+        size: '12oz',
+        sizePrice: 130,
+        addOns: [
+            { name: 'Milk', price: 30},
+            { name: 'Sugar', price: 30},
+        ]
+    },
+    {
+        id: 2,
+        productId: 1,
+        name: 'Caramel',
+        temperature: 'Hot',
+        quantity: 3,
+        size: '12oz',
+        sizePrice: 130,
+        addOns: []
+    },
+    {
+        id: 3,
+        productId: 2,
+        name: 'Mocha',
+        temperature: 'Hot',
+        quantity: 3,
+        size: '8oz',
+        sizePrice: 120,
+        addOns: []
+    },
+    {
+        id: 4,
+        productId: 3,
+        name: 'Americano',
+        temperature: 'Ice',
+        quantity: 3,
+        size: '12oz',
+        sizePrice: 150,
+        addOns: [
+            { name: 'Milk', price: 30},
+            { name: 'Sugar', price: 30},
+        ]
+    }
 ]

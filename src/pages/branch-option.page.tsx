@@ -1,24 +1,27 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/navbar";
 import { Location, NextSelect } from "../assets/iconify";
 import capitalBrewLogo from '../assets/images/capitalbrew-logos/CB-LOGO-ICON.png'
+import { ShowToast } from "../utils/toastify.utils";
 
 type Branch = {
     id: number;
     name: string;
     location: string;
+    isActive: boolean;
 };
 
 const branches: Branch[] = [
-    { id: 1, name: "Capital Brew Alabang", location: `Ground Floor, Filinvest One Building,
-Northgate Cyberzone, Filinvest Ave., Alabang, Muntinlupa City` },
-    { id: 2, name: "Capital Brew Techzone", location: "Techzone Building, Malugay St., San Antonio, Makati City" },
-    { id: 3, name: "Capital Brew iACADEMY", location: "iACADEMY Nexus Campus, Yakal St., Makati City" },
+    { id: 1, isActive: false, name: "Capital Brew Alabang", location: `Ground Floor, Filinvest One Building, Northgate Cyberzone, Filinvest Ave., Alabang, Muntinlupa City` },
+    { id: 2, isActive: false, name: "Capital Brew Techzone", location: "Techzone Building, Malugay St., San Antonio, Makati City" },
+    { id: 3, isActive: false, name: "Capital Brew iACADEMY", location: "iACADEMY Nexus Campus, Yakal St., Makati City" },
+    { id: 4, isActive: true, name: "Capital Brew STI Holdings", location: "2nd Floor, STI Holdings Center, 6764 Ayala Ave, Makati City, 1229 Metro Manila" },
 ];
 
 export default function BranchOptionPage() {
 
+    const location = useLocation()
     const [openCart, setOpenCart] = useState<boolean>(false);
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
@@ -26,6 +29,10 @@ export default function BranchOptionPage() {
     const [selected, setSelected] = useState<number | null>(null);
 
     const handleSelect = (branch: Branch) => {
+        if(branch.isActive === false) {
+            ShowToast(`${branch.name} is currently not a available.`, 'warning')
+            return
+        }
         setSelected(branch.id);
 
         // save selected branch (important for POS context)
@@ -33,7 +40,8 @@ export default function BranchOptionPage() {
 
         // small delay for UX
         setTimeout(() => {
-            navigate("/pos"); // or your menu route
+            // navigate("/pos"); // or your menu route
+            navigate("/home"); // or your menu route
         }, 200);
     };
 
@@ -50,12 +58,11 @@ export default function BranchOptionPage() {
                             <div className="lg:px-8 space-y-2 flex flex-col flex-1 overflow-y-auto">
                                 <div className="flex-1 bg-white rounded py-3">
                                     <div className="w-full max-w-3xl">
-                                        
                                         {/* Header */}
                                         <div className="text-center mb-5">
                                             <div className="text-base font-semibold">Select Branch</div>
                                             <div className="text-sm text-gray-500">
-                                                Choose where you want to order coffee
+                                                Choose where you want to order
                                             </div>
                                             <div className="flex items-center justify-center gap-2 mt-1">
                                                 <div className="w-6 h-[1px] bg-[#AA6833]" />
@@ -72,8 +79,8 @@ export default function BranchOptionPage() {
                                                 <div
                                                     key={branch.id}
                                                     onClick={() => handleSelect(branch)}
-                                                    className={` grid grid-cols-[auto_1fr_auto] gap-3
-                                                        cursor-pointer rounded-lg border p-4 bg-cbLightColor border-cbColorSecond shadow-sm
+                                                    className={`${branch.isActive ? 'bg-cbLightColor' : 'bg-gray-100'} grid grid-cols-[auto_1fr_auto] gap-3
+                                                        cursor-pointer rounded-lg border p-4 border-cbColorSecond shadow-sm
                                                     `}
                                                 >
                                                     <div className="flex justify-center items-center">

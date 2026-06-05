@@ -1,0 +1,112 @@
+// =====================
+// CORE TABLES
+// =====================
+
+Table products {
+  product_id integer [primary key]
+  product_name varchar
+  is_active boolean
+  created_at datetime
+  updated_at datetime
+}
+
+Table sizes {
+  size_id integer [primary key]
+  size_name varchar  // 8oz, 12oz, 16oz
+  is_active boolean
+  created_at datetime
+  updated_at datetime
+}
+
+Table temperature {
+  temperature_id integer [primary key]
+  temperature_name varchar  // Hot, Cold/Iced
+  is_active boolean
+  created_at datetime
+  updated_at datetime
+}
+
+
+// =====================
+// MENU (SELLABLE ITEMS)
+// =====================
+
+Table menu_items {
+  menu_item_id integer [primary key]
+
+  product_id integer
+  size_id integer
+  temperature_id integer
+
+  is_active boolean
+  note varchar
+
+  created_at datetime
+  updated_at datetime
+}
+
+
+// =====================
+// PRICE SYSTEM (SIZE-BASED PRICING)
+// =====================
+
+Table size_prices {
+  size_price_id integer [primary key]
+
+  size_id integer
+
+  price decimal
+
+  effective_from date
+  effective_to date  // NULL = current active price
+
+  created_at datetime
+  updated_at datetime
+}
+
+
+// =====================
+// ORDERS (FOR REPORTING)
+// =====================
+
+Table orders {
+  order_id integer [primary key]
+
+  order_date datetime
+  total_amount decimal
+
+  created_at datetime
+  updated_at datetime
+}
+
+
+// =====================
+// ORDER ITEMS (IMPORTANT: SNAPSHOT PRICE)
+// =====================
+
+Table order_items {
+  order_item_id integer [primary key]
+
+  order_id integer
+  menu_item_id integer
+
+  quantity integer
+  unit_price decimal
+  subtotal decimal
+
+  created_at datetime
+}
+
+
+// =====================
+// RELATIONSHIPS
+// =====================
+
+Ref: menu_items.product_id > products.product_id
+Ref: menu_items.size_id > sizes.size_id
+Ref: menu_items.temperature_id > temperature.temperature_id
+
+Ref: size_prices.size_id > sizes.size_id
+
+Ref: order_items.order_id > orders.order_id
+Ref: order_items.menu_item_id > menu_items.menu_item_id

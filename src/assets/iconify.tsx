@@ -1,12 +1,12 @@
 import type { SVGProps } from 'react';
 
 interface IconifyProps extends SVGProps<SVGSVGElement> {
-	color?: string; 
+	color?: string;
 }
 
 type IconifyComponentProps = {
-	color?: string
-	size?: string | number
+	color?: string;
+	size?: string | number;
 	className?: string;
 }
 
@@ -93,13 +93,12 @@ export const Checked = ({ color = 'currentColor', size = '1em' }: IconifyCompone
 
 export const BagCheck = ({ color = 'currentColor', size = '1em' }: IconifyComponentProps) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={size}
-			height={size} viewBox="0 0 24 24" style={{ color }}>
+		<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" style={{ color }}>
 			<path d="M0 0h24v24H0z" fill="none" />
-			<g fill="none" stroke={color} stroke-width="1.5">
+			<g fill="none" stroke={color} strokeWidth="1.5">
 				<path d="M3.742 20.555C4.942 22 7.174 22 11.64 22h.72c4.466 0 6.699 0 7.899-1.445m-16.517 0c-1.2-1.446-.788-3.64.035-8.03c.585-3.12.877-4.681 1.988-5.603M3.742 20.555Zm16.517 0c1.2-1.446.788-3.64-.035-8.03c-.585-3.12-.878-4.681-1.989-5.603m2.024 13.633ZM18.235 6.922C17.125 6 15.536 6 12.361 6h-.722c-3.175 0-4.763 0-5.874.922m12.47 0Zm-12.47 0Z" />
-				<path stroke-linecap="round" stroke-linejoin="round" d="m10 14.3l1.333 1.2l2.667-3" />
-				<path stroke-linecap="round" d="M9 6V5a3 3 0 1 1 6 0v1" />
+				<path strokeLinecap="round" strokeLinejoin="round" d="m10 14.3l1.333 1.2l2.667-3" />
+				<path strokeLinecap="round" d="M9 6V5a3 3 0 1 1 6 0v1" />
 			</g>
 		</svg>
 	)
@@ -158,7 +157,7 @@ export const Location = ({ color = 'currentColor', size = '1em' }: IconifyCompon
 
 export const Home = ({ color = 'currentColor', size = '1em' }: IconifyComponentProps) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+		<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} style={{ color }} viewBox="0 0 24 24">
 			<path d="M0 0h24v24H0z" fill="none" />
 			<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5">
 				<path d="M18.6 22H5.4A2.4 2.4 0 0 1 3 19.588V8.332c0-.382.18-.734.48-.965l7.78-5.126a1.195 1.195 0 0 1 1.44 0l7.82 5.126c.3.231.48.583.48.965v11.256A2.4 2.4 0 0 1 18.6 22Z" />
@@ -170,8 +169,7 @@ export const Home = ({ color = 'currentColor', size = '1em' }: IconifyComponentP
 
 export const Orders = ({ color = 'currentColor', size = '1em' }: IconifyComponentProps) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={size}
-			height={size} style={{ color }} viewBox="0 0 24 24">
+		<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} style={{ color }} viewBox="0 0 24 24">
 			<path d="M0 0h24v24H0z" fill="none" />
 			<path fill={color} d="m17.371 18.587l-.655-.656q-.13-.129-.307-.129q-.178 0-.307.129q-.129.128-.129.303t.129.304l.86.86q.186.187.419.187t.419-.187l2.098-2.067q.129-.129.139-.297q.01-.169-.139-.317q-.129-.129-.316-.129t-.317.13zM7.27 8.73h9.462q.213 0 .356-.143t.144-.357q0-.233-.144-.366q-.143-.134-.356-.134H7.269q-.213 0-.357.143t-.143.357t.143.357t.357.143M18 22.116q-1.671 0-2.835-1.165Q14 19.787 14 18.116t1.165-2.836T18 14.116t2.836 1.164T22 18.116q0 1.67-1.164 2.835Q19.67 22.116 18 22.116M4 5.616q0-.672.472-1.144T5.616 4h12.769q.67 0 1.143.472q.472.472.472 1.144v5.317q0 .213-.143.357t-.357.143t-.357-.143t-.143-.357V5.616q0-.231-.192-.424T18.384 5H5.616q-.231 0-.424.192T5 5.616V19.05h6.344q.031.202.073.404q.043.202.11.398q.067.179-.09.293q-.158.115-.3.01l-.249-.17q-.111-.073-.234-.073t-.235.073l-.877.607q-.111.074-.234.074t-.235-.074l-.877-.607q-.112-.073-.235-.073t-.234.073l-.877.607q-.111.074-.234.074t-.235-.074l-.877-.607q-.112-.073-.235-.073t-.234.073L4 20.788zm3.27 10.653h3.874q.214 0 .357-.143t.143-.357t-.143-.356t-.357-.144H7.27q-.213 0-.357.144t-.143.356t.143.357t.357.143m0-3.769h7.204q.213 0 .357-.143t.143-.357t-.143-.357t-.357-.143H7.269q-.213 0-.357.143T6.77 12t.143.357t.357.143M5 19.05V5z" />
 		</svg>
@@ -204,7 +202,7 @@ export const Arrow = ({ color = 'currentColor', size = '1em', className }: Iconi
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" className={className} width={size} height={size} style={{ color }} viewBox="0 0 24 24">
 			<path d="M0 0h24v24H0z" fill="none" />
-			<path fill={color} fill-rule="evenodd" d="m4 15l8-8l8 8l-2 2l-6-6l-6 6z" />
+			<path fill={color} fillRule="evenodd" d="m4 15l8-8l8 8l-2 2l-6-6l-6 6z" />
 		</svg>
 	)
 }
