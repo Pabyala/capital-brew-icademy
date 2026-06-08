@@ -206,3 +206,33 @@ export const Arrow = ({ color = 'currentColor', size = '1em', className }: Iconi
 		</svg>
 	)
 }
+
+export const Cook = ({ color = 'currentColor', size = '1em', className }: IconifyComponentProps) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" className={className} width={size} height={size} style={{ color }} viewBox="0 0 48 48">
+			<path d="M0 0h48v48H0z" fill="none" />
+			<path fill="none" stroke={color} stroke-linecap="round" stroke-linejoin="round" d="M34.022 25.77a7 7 0 0 0 1.728.23a7 7 0 1 0 0-14a7 7 0 0 0-5.541 2.75A7 7 0 0 0 23.25 8.5a7 7 0 0 0-6.555 4.594A7 7 0 0 0 5.25 18.5a7 7 0 0 0 6.225 6.945L9.662 39.5H32.25l2.168-16.805m-1.266 9.82H14.534" />
+		</svg>
+	)
+}
+
+export const Filter = ({ color = 'currentColor', size = '1em', className }: IconifyComponentProps) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" className={className} width={size} height={size} style={{ color }} viewBox="0 0 24 24">
+			<path d="M0 0h24v24H0z" fill="none" />
+			<path fill={color} d="M14.037 20.937a1 1 0 0 1-.518-.145l-3.334-2a2.55 2.55 0 0 1-1.233-2.176v-4.525a1.53 1.53 0 0 0-.284-.891L4.013 4.658a1.01 1.01 0 0 1 .822-1.6h14.33a1.009 1.009 0 0 1 .822 1.6L15.332 11.2a1.53 1.53 0 0 0-.285.891v7.834a1.013 1.013 0 0 1-1.01 1.012M4.835 4.063l4.647 6.557a2.5 2.5 0 0 1 .47 1.471v4.524a1.54 1.54 0 0 0 .747 1.318l3.334 2l.014-7.843a2.5 2.5 0 0 1 .471-1.471l4.654-6.542Z" />
+		</svg>
+	)
+}
+
+export const MapLocation = ({ color = 'currentColor', size = '1em', className }: IconifyComponentProps) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" className={className} width={size} height={size} style={{ color }} viewBox="0 0 24 24">
+			<path d="M0 0h24v24H0z" fill="none" />
+			<g fill={color} fill-rule="evenodd" clip-rule="evenodd">
+				<path d="M7.25 10a4.75 4.75 0 1 1 9.5 0a4.75 4.75 0 0 1-9.5 0M12 6.75a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5" />
+				<path d="M3.524 8.857a8.29 8.29 0 0 1 8.26-7.607h.432a8.29 8.29 0 0 1 8.26 7.607a8.94 8.94 0 0 1-1.99 6.396l-4.793 5.861a2.187 2.187 0 0 1-3.386 0l-4.793-5.861a8.94 8.94 0 0 1-1.99-6.396m8.26-6.107A6.79 6.79 0 0 0 5.02 8.98a7.44 7.44 0 0 0 1.656 5.323l4.793 5.862a.687.687 0 0 0 1.064 0l4.793-5.862A7.44 7.44 0 0 0 18.98 8.98a6.79 6.79 0 0 0-6.765-6.23z" />
+			</g>
+		</svg>
+	)
+}

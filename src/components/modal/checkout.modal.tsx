@@ -3,19 +3,23 @@ import { BagCheck } from "../../assets/iconify";
 import { AddOns, Checkout, checkOutSummary } from "../data/capital-brew-data";
 import LabelDivider from "../common/label-divider";
 import { formatNumber } from "../../utils/format-number.utils";
-import CheckoutItem from "../items/checkout.item";
+import CheckoutItem from "../grid-item/checkout.item";
 import DeliveryMethod from "../common/delivery-method";
 import { getAddOnsTotal, getTotalPriceByQty } from "../../utils/checkout.utils";
 import CheckoutFooter from "../common/checkout-footer";
 import CheckoutHeader from "../common/checkout-header";
 
-export default function CheckoutModal() {
+interface CheckoutModalProps {
+    onClick: (value: boolean) => void;
+}
+
+export default function CheckoutModal({ onClick }: CheckoutModalProps) {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4">
             <div className="w-full max-w-3xl bg-white rounded shadow max-h-[90vh] flex flex-col overflow-hidden">
                 {/* HEADER */}
-                <CheckoutHeader/>
+                <CheckoutHeader onClick={onClick}/>
                 {/* CONTENT */}
                 <div className="flex-1 overflow-y-auto p-6 space-y-3 text-sm">
                     <LabelDivider label="My order"/>

@@ -406,3 +406,119 @@ export const checkOutSummary: Checkout[] = [
         ]
     }
 ]
+
+export const myOrdersSummary = [
+    {
+        id: '20260608-0001',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - STI Holdings',
+        status: 'delivered',
+        total: 110,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0002',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - STI Holdings',
+        status: 'delivered',
+        total: 200,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0003',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - Alabang',
+        status: 'delivered',
+        total: 150,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0004',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - iACADEMY',
+        status: 'delivered',
+        total: 430,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0005',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - iACADEMY',
+        status: 'delivered',
+        total: 600,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0006',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - Tech zone',
+        status: 'delivered',
+        total: 200,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0007',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - Alabang',
+        status: 'delivered',
+        total: 750,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0008',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - STI Holdings',
+        status: 'delivered',
+        total: 160,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0009',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - STI Holdings',
+        status: 'delivered',
+        total: 1000,
+        order_summary: [
+        ]
+    },
+    {
+        id: '20260608-0010',
+        date: '6 Jun 2026, 06:12 PM',
+        location: 'CapBrew - STI Holdings',
+        status: 'delivered',
+        total: 400,
+        order_summary: [
+        ]
+    },
+]
+
+export const subMenu = [
+    {
+        id: 1,
+        iconNo: 1,
+        item: 'Home',
+    },
+    {
+        id: 2,
+        iconNo: 2,
+        item: 'Cart',
+    },
+    {
+        id: 3,
+        iconNo: 3,
+        item: 'Orders',
+    },
+    {
+        id: 4,
+        iconNo: 4,
+        item: 'Profile',
+    },
+]

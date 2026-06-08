@@ -1,4 +1,6 @@
-import { Branch, Cart, Logout, Orders, User } from '../../assets/iconify';
+import { Logout } from '../../assets/iconify';
+import { subMenu } from '../data/capital-brew-data';
+import SideBarMenuItem from '../grid-item/side-bar-menu.item';
 
 interface MenuModalProps {
     onClose: () => void;
@@ -9,28 +11,24 @@ export default function MenuModal({ onClose, open }: MenuModalProps) {
 
     return (
         <div className="fixed inset-0 bg-black/40 z-[100] flex justify-start">
-            <div className="w-[350px] h-full bg-white shadow-xl animate-slide-left flex flex-col">
-                <div className="flex justify-between items-center border-b py-4 px-3">
-                    <h2 className="font-semibold text-sm">Juan Dela Cruz</h2>
-                    <button onClick={onClose} className="text-sm rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-200">✕</button>
+            <div className="w-[350px] h-full bg-white shadow-xl animate-slide-left flex flex-col space-y-4">
+                <div className="flex justify-center items-center space-x-4 pb-4 pt-8 px-3">
+                    <div className='flex items-center rounded space-x-2 text-xl font-semibold'>
+                        <button className="bg-cbColor text-white rounded-full p-1 transition cursor-pointer w-14 h-14 lg:w-10 lg:h-10">
+                            {`JC`}
+                        </button>
+                    </div>
+                    <div>
+                        <p className="text-base text-gray-800 font-medium">{`Juan Dela Cruz`}</p>
+                        <p className="text-sm text-gray-700">{`juandelacruz@gmail.com`}</p>
+                    </div>
                 </div>
                 <div className="flex-1 overflow-y-auto p-3 space-y-2">
-                    <div className="border-b border-cbColorSecond relative rounded p-2.5 flex space-x-2.5 items-center">
-                        <Branch color={'#3B2314'} size={23}/>
-                        <div className='text-sm text-cbColorDark font-medium'>Home</div>
-                    </div>
-                    <div className="border-b border-cbColorSecond relative rounded p-2.5 flex space-x-2.5 items-center">
-                        <Cart color={'#3B2314'} size={25}/>
-                        <div className='text-sm text-cbColorDark font-medium'>Cart</div>
-                    </div>
-                    <div className="border-b border-cbColorSecond relative rounded p-2.5 flex space-x-2.5 items-center">
-                        <Orders color={'#3B2314'} size={25}/>
-                        <div className='text-sm text-cbColorDark font-medium'>Orders</div>
-                    </div>
-                    <div className="border-b border-cbColorSecond relative rounded p-2.5 flex space-x-2.5 items-center">
-                        <User color={'#3B2314'} size={25}/>
-                        <div className='text-sm text-cbColorDark font-medium'>Profile</div>
-                    </div>
+                    {subMenu.map((menu) => {
+                        return (
+                            <SideBarMenuItem key={menu.id} menu={menu}/>
+                        )
+                    })}
                 </div>
                 <div className="border-t p-4">
                     <button className="w-full flex items-center justify-center gap-2 bg-cbColor text-white py-2 rounded text-sm">

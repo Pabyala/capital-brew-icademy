@@ -11,6 +11,7 @@ import NotFoundPage from './pages/not-found.page';
 import HomePage from './pages/home.page';
 import LoadingPage from './pages/loading.page';
 import BranchOptionPage from './pages/branch-option.page';
+import MyOrders from './pages/my-orders';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <Route path='/' element={<MainLayout/>}>
           <Route path="unauthorized" element={<UnauthorizedPage />}/>
           <Route path="*" element={<NotFoundPage />}/>
-
+          
           <Route path='/account' element={<AccountLayout/>}>
             <Route path="signin" element={<SigninUserPage />} />
             <Route path="signup" element={<SignupUserPage />} />
@@ -41,6 +42,7 @@ function App() {
           </Route>
           
           <Route path="/home" element={<HomePage />} />
+          <Route path="/my-order" element={<MyOrders />} />
           <Route path="/cb-branch" element={<BranchOptionPage />} />
           <Route path="loading" element={<LoadingPage />} />
         </Route>

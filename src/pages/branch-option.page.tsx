@@ -1,33 +1,31 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/navbar";
-import { Location, NextSelect } from "../assets/iconify";
-import capitalBrewLogo from '../assets/images/capitalbrew-logos/CB-LOGO-ICON.png'
 import { ShowToast } from "../utils/toastify.utils";
+import BranchItem from "../components/grid-item/branch.item";
 
-type Branch = {
+export interface Branch {
     id: number;
     name: string;
     location: string;
     isActive: boolean;
 };
 
-const branches: Branch[] = [
+export const branches: Branch[] = [
     { id: 1, isActive: false, name: "Capital Brew Alabang", location: `Ground Floor, Filinvest One Building, Northgate Cyberzone, Filinvest Ave., Alabang, Muntinlupa City` },
     { id: 2, isActive: false, name: "Capital Brew Techzone", location: "Techzone Building, Malugay St., San Antonio, Makati City" },
     { id: 3, isActive: false, name: "Capital Brew iACADEMY", location: "iACADEMY Nexus Campus, Yakal St., Makati City" },
-    { id: 4, isActive: true, name: "Capital Brew STI Holdings", location: "2nd Floor, STI Holdings Center, 6764 Ayala Ave, Makati City, 1229 Metro Manila" },
+    { id: 4, isActive: true, name: "Capital Brew STI Holdings", location: "2nd Floor, STI Holdings Center, 6764 Ayala Ave, Makati City" },
 ];
 
 export default function BranchOptionPage() {
 
-    const location = useLocation()
     const [openCart, setOpenCart] = useState<boolean>(false);
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
     const navigate = useNavigate();
     const [selected, setSelected] = useState<number | null>(null);
-
+    
     const handleSelect = (branch: Branch) => {
         if(branch.isActive === false) {
             ShowToast(`${branch.name} is currently not a available.`, 'warning')
@@ -76,28 +74,7 @@ export default function BranchOptionPage() {
                                         {/* Branch grid */}
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                             {branches.map((branch) => (
-                                                <div
-                                                    key={branch.id}
-                                                    onClick={() => handleSelect(branch)}
-                                                    className={`${branch.isActive ? 'bg-cbLightColor' : 'bg-gray-100'} grid grid-cols-[auto_1fr_auto] gap-3
-                                                        cursor-pointer rounded-lg border p-4 border-cbColorSecond shadow-sm
-                                                    `}
-                                                >
-                                                    <div className="flex justify-center items-center">
-                                                        <img src={capitalBrewLogo} className="w-14 h-14 lg:w-16 lg:h-16 object-cover rounded" alt="" />
-                                                    </div>
-                                                    <div className="flex flex-col">
-                                                        <div className="font-semibold text-sm">
-                                                            {branch.name}
-                                                        </div>
-                                                        <div className="mt-1 text-xs text-cbColorDark">
-                                                            {branch.location}
-                                                        </div>
-                                                    </div>
-                                                    <div className="items-center flex justify-center">
-                                                        <NextSelect size={20} color="#3B2314"/>
-                                                    </div>
-                                                </div>
+                                                <BranchItem key={branch.id} branch={branch} handleSelect={handleSelect}/>
                                             ))}
                                         </div>
                                     </div>

@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { popularPickCoffee } from '../data/capital-brew-data'
-import PopularCoffee from '../common/popular-coffee'
 import IceCoffee from '../../assets/images/items/Image-4.png'
 import ItemModal from '../modal/item.modal';
 
