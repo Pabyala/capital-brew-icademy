@@ -3,20 +3,18 @@ import { BagCheck } from "../../assets/iconify";
 import { cartCoffee } from "../data/capital-brew-data";
 import CheckoutModal from "./checkout.modal";
 import CartItem from "../grid-item/cart.item";
+import { useDispatch, useSelector } from "react-redux";
+import { selectModalConfirm, setClearModal, setModalConfirm } from "../../features/modals/modal-type.features.slice";
 
-interface NavbarProps {
-    onClose: () => void;
-    open: boolean;
-}
-
-export default function CartModal({ onClose, open }: NavbarProps) {
+export default function CartModal() {
     
-    const [showCheckoutSummary, setShowCheckoutSummary] = useState<boolean>(false)
+    const dispatch = useDispatch()
+    const selectedModalConfirm = useSelector(selectModalConfirm)
     const [expandedItem, setExpandedItem] = useState<number | null>(null);
-
+    
     return (
         <div className="fixed inset-0 bg-black/40 z-[99] flex justify-end">
-            <div onClick={onClose} className="flex-1"/>
+            <div onClick={() => dispatch(setClearModal({type: 'modalShow'}))} className="flex-1"/>
             <div className="w-[350px] h-full bg-white shadow-xl animate-slide-left flex flex-col">
                 <div className="flex justify-between items-center border-b py-4 px-3">
                     <h2 className="font-semibold text-sm">Cart</h2>
@@ -46,7 +44,7 @@ export default function CartModal({ onClose, open }: NavbarProps) {
                         <div className="text-sm">Total (<span className="font-medium">{'12'} items</span>)</div>
                         <div className="text-sm font-medium">{`₱1,000.00`}</div>
                     </div>
-                    <button onClick={() => setShowCheckoutSummary(true)} className="w-full flex items-center justify-center gap-2 bg-cbColor text-white py-2 rounded text-sm">
+                    <button onClick={() => dispatch(setModalConfirm('confirmOrderSummary'))} className="w-full flex items-center justify-center gap-2 bg-cbColor text-white py-2 rounded text-sm">
                         <div className="flex items-center justify-center">
                             <BagCheck size={18}/>
                         </div>
@@ -54,7 +52,7 @@ export default function CartModal({ onClose, open }: NavbarProps) {
                     </button>
                 </div>
             </div>
-            {showCheckoutSummary && (<CheckoutModal onClick={setShowCheckoutSummary}/>)}
+            {selectedModalConfirm === 'confirmOrderSummary' && (<CheckoutModal />)}
         </div>
     )
 }

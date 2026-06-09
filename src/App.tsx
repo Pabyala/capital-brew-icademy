@@ -12,8 +12,15 @@ import HomePage from './pages/home.page';
 import LoadingPage from './pages/loading.page';
 import BranchOptionPage from './pages/branch-option.page';
 import MyOrders from './pages/my-orders';
+import MyProfile from './pages/my-profile';
+import { selectFilterBranch } from './features/orders/filter-orders.features.slice';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const selectBranch = useSelector(selectFilterBranch);
+  console.log("selectBranch: ", selectBranch)
+
   return (
     <>
       <ToastContainer
@@ -45,6 +52,7 @@ function App() {
           <Route path="/my-order" element={<MyOrders />} />
           <Route path="/cb-branch" element={<BranchOptionPage />} />
           <Route path="loading" element={<LoadingPage />} />
+          <Route path="/my-profile" element={<MyProfile />} />
         </Route>
       </Routes>
     </>

@@ -1,34 +1,21 @@
 import OutletPage from './outlet.page';
 import Navbar from '../components/layout/navbar';
-import { useState } from 'react';
 import CartModal from '../components/modal/cart.modal';
 import MenuModal from '../components/modal/menu.modal';
+import { useSelector } from 'react-redux';
+import { selectModalShow } from '../features/modals/modal-type.features.slice';
 
 export default function POSPage() {
 
-    const [openCart, setOpenCart] = useState<boolean>(false);
-    const [openMenu, setOpenMenu] = useState<boolean>(false);
+    const selectedModalShow = useSelector(selectModalShow)
 
     return (
         <div className='min-h-screen'>
             <div className='h-screen mx-auto flex flex-col overflow-y-auto bg-white'>
-                <Navbar
-                    openCart={() => setOpenCart(true)}
-                    openMenu={() => setOpenMenu(true)}
-                />
+                <Navbar />
                 <OutletPage/>
-                {openMenu && (
-                    <MenuModal
-                        open={openMenu}
-                        onClose={() => setOpenMenu(false)}
-                    />
-                )}
-                {openCart && (
-                    <CartModal
-                        open={openCart}
-                        onClose={() => setOpenCart(false)}
-                    />
-                )}
+                {selectedModalShow === 'showSideMenu' && (<MenuModal />)}
+                {selectedModalShow === 'showSideCard' && (<CartModal />)}
             </div>
         </div>
     )

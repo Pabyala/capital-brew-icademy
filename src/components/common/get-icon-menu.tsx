@@ -1,4 +1,4 @@
-import { Branch, Cart, Orders, User } from "../../assets/iconify";
+import { Branch, Cart, Information, Orders, User } from "../../assets/iconify";
 
 interface GetIconMenuProps {
     iconNo: number;
@@ -15,6 +15,8 @@ export default function GetIconMenu({iconNo, iconColor = '#3B2314'}: GetIconMenu
             return <Orders color={iconColor} size={25}/>
         case 4:
             return <User color={iconColor} size={25}/>
+        case 5:
+            return <Information color={iconColor} size={25}/>
         default:
             return <Branch color={iconColor} size={23}/>
     }

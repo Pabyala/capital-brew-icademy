@@ -1,17 +1,22 @@
-import { useState } from 'react'
 import { popularPickCoffee } from '../data/capital-brew-data'
 import IceCoffee from '../../assets/images/items/Image-4.png'
 import ItemModal from '../modal/item.modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModalShow, setClearModal, setModalShow } from '../../features/modals/modal-type.features.slice';
 
 export default function AvailableCoffee() {
 
-    const [isShowModal, setIsShowModal] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const selectedModalShow = useSelector(selectModalShow);
+    const handleClose = () => {
+        dispatch(setClearModal({type: 'modalShow'}))
+    };
 
     return (
         <div className='w-full mt-4'>
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3'>
                 {popularPickCoffee.map((coffee) => (
-                    <div onClick={() => setIsShowModal(true)} key={coffee.id} className='relative bg-white p-3 rounded-lg shadow-sm border flex flex-col justify-between '>
+                    <div onClick={() => dispatch(setModalShow('showSelectedProduct'))} key={coffee.id} className='relative bg-white p-3 rounded-lg shadow-sm border flex flex-col justify-between '>
                         <div>
                             <div className='w-full flex items-center justify-center'>
                                 <div className="w-[100px] h-[100px] overflow-hidden rounded-t-lg flex">
@@ -35,7 +40,7 @@ export default function AvailableCoffee() {
                     </div>
                 ))}
             </div>
-            {isShowModal && (<ItemModal setIsShowModal={setIsShowModal}/>)}
+            {selectedModalShow === 'showSelectedProduct' && (<ItemModal handleClose={handleClose}/>)}
         </div>
     )
 }

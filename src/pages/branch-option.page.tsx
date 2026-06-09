@@ -46,11 +46,8 @@ export default function BranchOptionPage() {
     return (
         <div className='min-h-screen'>
             <div className='h-screen flex flex-col bg-gray-100'>
-                <Navbar
-                    openCart={() => setOpenCart(true)}
-                    openMenu={() => setOpenMenu(true)}
-                />
-                <div className='h-screen flex flex-col bg-gray-100 pt-[50px]'>
+                {/* <Navbar /> */}
+                <div className='h-screen flex flex-col bg-gray-100'>
                     <div className='h-screen container mx-auto flex flex-col overflow-hidden bg-white'>
                         <div className="lg:px-8 space-y-2 flex flex-col flex-1 overflow-y-auto">
                             <div className="lg:px-8 space-y-2 flex flex-col flex-1 overflow-y-auto">

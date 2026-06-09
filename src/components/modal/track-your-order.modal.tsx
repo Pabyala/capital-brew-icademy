@@ -4,13 +4,12 @@ import TrackYourOrderHeader from '../common/track-your-order-header'
 import { Checkout, checkOutSummary } from '../data/capital-brew-data';
 import IceCoffee from '../../assets/images/items/Image-4.png'
 import { useState } from 'react';
+import { setClearModal } from '../../features/modals/modal-type.features.slice';
+import { useDispatch } from 'react-redux';
 
-interface TrackYourOrderModalProps {
-    onClick: (value: boolean) => void;
-}
+export default function TrackYourOrderModal() {
 
-export default function TrackYourOrderModal({ onClick }: TrackYourOrderModalProps) {
-
+    const dispatch = useDispatch()
     const [showAllItems, setShowAllItems] = useState(false);
     const displayedItems = showAllItems
         ? checkOutSummary
@@ -21,7 +20,7 @@ export default function TrackYourOrderModal({ onClick }: TrackYourOrderModalProp
     return (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4">
             <div className="w-full max-w-3xl bg-white rounded shadow max-h-[90vh] flex flex-col overflow-hidden">
-                <TrackYourOrderHeader onClick={onClick}/>
+                <TrackYourOrderHeader onClick={() => dispatch(setClearModal({ type: 'modalShow'}))}/>
                 <div className="flex-1 overflow-y-auto p-6 space-y-3 text-sm">
                     <div className="grid grid-cols-2 gap-y-0">
                         <div className='font-medium'>Receiver Name:</div>

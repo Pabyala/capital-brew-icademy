@@ -4,10 +4,10 @@ import { BagCheck } from '../../assets/iconify'
 import { AddOns, coffeeSizes, temperature } from '../data/capital-brew-data'
 
 interface ItemModalProps {
-    setIsShowModal: (value: boolean) => void;
+    handleClose: () => void;
 }
 
-export default function ItemModal({ setIsShowModal }: ItemModalProps) {
+export default function ItemModal({ handleClose }: ItemModalProps) {
 
     const [selected, setSelected] = useState<number[]>([]);
     const maxSelect = 2
@@ -177,7 +177,7 @@ export default function ItemModal({ setIsShowModal }: ItemModalProps) {
                             </div>
                         </div>
                         <div className='absolute right-5 top-2'>
-                            <button onClick={() => setIsShowModal(false)} className='w-8 h-8 flex items-center justify-center bg-[#aa693325] rounded-full border border-cbColor'>
+                            <button onClick={handleClose} className='w-8 h-8 flex items-center justify-center bg-[#aa693325] rounded-full border border-cbColor'>
                                 <span className='text-xs'>✕</span>
                             </button>
                         </div>

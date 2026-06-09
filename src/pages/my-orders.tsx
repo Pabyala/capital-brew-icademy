@@ -6,39 +6,29 @@ import OrderFilterStatus from '../components/layout/order-filter-status';
 import MyOrderItem from '../components/grid-item/my-order.item';
 import TrackYourOrderModal from '../components/modal/track-your-order.modal';
 import MyOrderFilterModal from '../components/modal/my-order-filter.modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModalShow } from '../features/modals/modal-type.features.slice';
+import { DefaultData } from '../interface/default.interface';
+import { reorderTabs, selectActiveTab, selectTabs, setActiveTab } from '../features/orders/filter-orders.features.slice';
 
 export default function MyOrders() {
 
-    const [showOrderSummary, setShowOrderSummary] = useState<boolean>(false)
-    const [showFilter, setShowFilter] = useState<boolean>(false)
+    const dispatch = useDispatch()
+    const selectedModalShow = useSelector(selectModalShow)
+    const tabs = useSelector(selectTabs);
+    const activeTab = useSelector(selectActiveTab);
 
-    const defaultTabs = [
-        "All",
-        "Pending",
-        "Preparing",
-        "Ready",
-        "Completed",
-    ];
-    const [tabs, setTabs] = useState(defaultTabs);
-    const [activeTab, setActiveTab] = useState("All");
-
-    const handleTabClick = (tab: string) => {
-        setActiveTab(tab);
-
-        setTabs(() => {
-            const reordered = [
-                tab, ...defaultTabs.filter((t) => t !== tab),
-            ];
-            return reordered;
-        });
+    const handleTabClick = (tab: DefaultData) => {
+        dispatch(setActiveTab(tab));
+        dispatch(reorderTabs(tab));
     };
 
     return (
         <div className='h-screen flex flex-col bg-white'>
-            <OrderHeader onClick={setShowFilter}/>
+            <OrderHeader />
             <OrderFilterStatus
                 tabs={tabs}
-                activeTab={activeTab}
+                activeTab={activeTab.name}
                 onClick={handleTabClick}
             />
             <div className='flex-1 overflow-y-auto bg-gray-100'>
@@ -48,14 +38,14 @@ export default function MyOrders() {
                     ) : (
                         myOrdersSummary.map((order) => {
                             return (
-                                <MyOrderItem onClick={setShowOrderSummary} key={order.id} order={order}/>
+                                <MyOrderItem key={order.id} order={order}/>
                             )
                         })
                     )}
                 </div>
             </div>
-            {showOrderSummary && (<TrackYourOrderModal onClick={setShowOrderSummary}/>)}
-            {showFilter && (<MyOrderFilterModal onClick={setShowFilter}/>)}
+            {selectedModalShow === 'showOrderedSummary' && (<TrackYourOrderModal />)}
+            {selectedModalShow === 'showFilterOrder' && (<MyOrderFilterModal />)}
         </div>
     )
 }

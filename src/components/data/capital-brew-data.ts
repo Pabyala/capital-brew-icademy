@@ -1,3 +1,5 @@
+import { DefaultData } from "../../interface/default.interface"
+
 export const popularPickCoffee = [
     { 
         id: 1,
@@ -327,7 +329,7 @@ export const coffeeSizes = [
     },
 ]
 
-export const categories = [
+export const categories: DefaultData[] = [
     {
         id: 1,
         name: 'Coffee',
@@ -500,25 +502,42 @@ export const myOrdersSummary = [
     },
 ]
 
-export const subMenu = [
+export interface SubMenu {
+    id: number;
+    iconNo: number;
+    item: string;
+    to: string;
+}
+
+export const subMenu: SubMenu[] = [
     {
         id: 1,
         iconNo: 1,
         item: 'Home',
+        to: '/cb-branch'
     },
     {
         id: 2,
         iconNo: 2,
         item: 'Cart',
+        to: ''
     },
     {
         id: 3,
         iconNo: 3,
         item: 'Orders',
+        to: '/my-order'
     },
     {
         id: 4,
         iconNo: 4,
         item: 'Profile',
+        to: '/my-profile'
+    },
+    {
+        id: 5,
+        iconNo: 5,
+        item: 'About Us',
+        to: '/about-us'
     },
 ]

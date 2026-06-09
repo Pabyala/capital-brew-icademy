@@ -1,16 +1,20 @@
+import { useDispatch } from "react-redux";
 import { Arrow, MapLocation } from "../../assets/iconify";
 import { getOrderStatusColor } from "../../utils/get-order-status-color";
+import { setModalShow } from "../../features/modals/modal-type.features.slice";
 
 interface MyOrderItemProps {
     order: any;
-    onClick: (value: boolean) => void;
 }
 
-export default function MyOrderItem({ order, onClick }: MyOrderItemProps) {
+export default function MyOrderItem({ order }: MyOrderItemProps) {
+    
+    const dispatch = useDispatch()
+    
     return (
-        <div onClick={() => onClick(true)} className={`border border-gray-200 rounded-md p-3 flex justify-between items-center`}>
+        <div onClick={() => dispatch(setModalShow('showOrderedSummary'))} className={`border border-gray-200 rounded-md p-3 flex justify-between items-center`}>
             <div className="space-y-1">
-                <div className='text-sm font-medium text-gray-700'>{`ID: ${order.id}`}</div>
+                <div className='text-sm font-medium text-gray-700'>{`${order.id}`}</div>
                 <div className='text-xs'>{order.date}</div>
                 <div className='flex space-x-1'>
                     <MapLocation size={14}/>
